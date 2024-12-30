@@ -31,8 +31,8 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Submit Dependency Snapshot
-      uses: advanced-security/maven-dependency-submission-action@v4
+#    - name: Submit Dependency Snapshot
+#      uses: advanced-security/maven-dependency-submission-action@v4
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
