@@ -7,6 +7,12 @@ on:
     branches: [ "master" ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+  security-events: write
+
 jobs:
   maven-build:
     runs-on: ubuntu-latest
