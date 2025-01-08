@@ -10,11 +10,11 @@ on:
   workflow_dispatch:
 
 
+#Special permissions required for OIDC authentication
 permissions:
-  contents: read
   id-token: write
-  actions: read
-  security-events: write
+  contents: read
+  pull-requests: write
 
 jobs:
   maven-build:
