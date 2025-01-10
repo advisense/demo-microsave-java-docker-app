@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
+        <version>3.4.0</version>
         <relativePath/>
     </parent>
 
@@ -17,26 +17,109 @@
     <description>A simple vulnerable java app deployed on Docker and Openshift</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <maven.compiler.release>20</maven.compiler.release>
+        <mongodb-driver.version>5.2.1</mongodb-driver.version>       
     </properties>
 
     <dependencies>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+        </dependency>
+        
+        <dependency>
+             <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-core</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-crypt</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+
+        <dependency>
+            <scope>test</scope>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.15.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+
+ <dependency>
+     <groupId>net.bytebuddy</groupId>
+     <artifactId>byte-buddy</artifactId>
+     <version>1.15.11</version>
+ </dependency>
+
+ <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
+ <dependency>
+     <groupId>net.bytebuddy</groupId>
+     <artifactId>byte-buddy-agent</artifactId>
+     <version>1.15.11</version>
+     <scope>test</scope>
+ </dependency>
+
     </dependencies>
 
     <build>
+        <resources>
+        <resource>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <filtering>true</filtering>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.yml</include>
+                <include>**/*.yaml</include>
+                <include>**/*.json</include>
+            </includes>
+        </resource>
+    </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                            <configuration>
+                                <addResources>true</addResources>
+                            </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>

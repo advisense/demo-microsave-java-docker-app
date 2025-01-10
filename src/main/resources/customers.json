@@ -1,0 +1,344 @@
+{
+    "customers": [
+    {
+        "customer_id": "a307d002-c147-4c3e-ab26-da186ada1166",
+        "first_name": "Mark",
+        "last_name": "Zimmerman",
+        "email": "hmolina@example.org",
+        "phone_number": "362-340-4763",
+        "address": {
+            "street_address": "202 Jennifer Centers",
+            "city": "Gonzalesfort",
+            "state": "Virginia",
+            "postal_code": "47591",
+            "country": "North Macedonia"
+        },
+        "account_balance": 8337.37,
+        "savings_balance": 3647.09,
+        "joined_date": "2022-06-21"
+    },
+    {
+        "customer_id": "75378627-c774-4547-8ed4-786397eba85f",
+        "first_name": "Crystal",
+        "last_name": "Diaz",
+        "email": "lisaortega@example.net",
+        "phone_number": "+1-541-504-8181x109",
+        "address": {
+            "street_address": "47975 Chavez Trafficway",
+            "city": "Millerburgh",
+            "state": "Oklahoma",
+            "postal_code": "70594",
+            "country": "Chad"
+        },
+        "account_balance": 8358.68,
+        "savings_balance": 2503.96,
+        "joined_date": "2024-01-28"
+    },
+    {
+        "customer_id": "53b7b651-10ae-4b48-982c-ad6f8faa2861",
+        "first_name": "Adriana",
+        "last_name": "Rodriguez",
+        "email": "bautistamelissa@example.net",
+        "phone_number": "900.587.8690x81827",
+        "address": {
+            "street_address": "5454 Simmons Trafficway Suite 234",
+            "city": "Lisafurt",
+            "state": "Minnesota",
+            "postal_code": "67174",
+            "country": "Mexico"
+        },
+        "account_balance": 6379.89,
+        "savings_balance": 3315.03,
+        "joined_date": "2020-06-29"
+    },
+    {
+        "customer_id": "73a85c87-85e3-4a58-9995-584118a2a379",
+        "first_name": "Michelle",
+        "last_name": "Thomas",
+        "email": "ifriedman@example.org",
+        "phone_number": "+1-337-422-0780",
+        "address": {
+            "street_address": "624 Acosta Street",
+            "city": "Carrieville",
+            "state": "Delaware",
+            "postal_code": "65467",
+            "country": "Kenya"
+        },
+        "account_balance": 1697.76,
+        "savings_balance": 4397.01,
+        "joined_date": "2020-03-24"
+    },
+    {
+        "customer_id": "c84ed11e-9c1b-4d9e-bc17-736b487943f9",
+        "first_name": "Riley",
+        "last_name": "Bartlett",
+        "email": "joseph87@example.com",
+        "phone_number": "6815451120",
+        "address": {
+            "street_address": "9122 Lisa Village",
+            "city": "Ashleyview",
+            "state": "Washington",
+            "postal_code": "80230",
+            "country": "Jamaica"
+        },
+        "account_balance": 6263.93,
+        "savings_balance": 1986.82,
+        "joined_date": "2021-11-09"
+    },
+    {
+        "customer_id": "cbfec695-7819-4998-9b0e-859f2501ccc2",
+        "first_name": "Chad",
+        "last_name": "Deleon",
+        "email": "banksharry@example.com",
+        "phone_number": "(359)790-9049x5037",
+        "address": {
+            "street_address": "26165 Elizabeth Throughway",
+            "city": "New Laura",
+            "state": "Louisiana",
+            "postal_code": "27148",
+            "country": "Faroe Islands"
+        },
+        "account_balance": 3845.55,
+        "savings_balance": 3093.1,
+        "joined_date": "2022-12-10"
+    },
+    {
+        "customer_id": "040de37c-10d6-43d2-b4d9-10b6951ab701",
+        "first_name": "Christina",
+        "last_name": "Jenkins",
+        "email": "laura40@example.com",
+        "phone_number": "224-513-6670x19722",
+        "address": {
+            "street_address": "7715 Ann Motorway",
+            "city": "Phillipsmouth",
+            "state": "Washington",
+            "postal_code": "35891",
+            "country": "Switzerland"
+        },
+        "account_balance": 2853.57,
+        "savings_balance": 3594.0,
+        "joined_date": "2021-04-28"
+    },
+    {
+        "customer_id": "f4e4ee8c-8ee9-45e9-8c14-2ec77883508c",
+        "first_name": "John",
+        "last_name": "Kline",
+        "email": "scottjames@example.org",
+        "phone_number": "753.586.9881x136",
+        "address": {
+            "street_address": "363 Morgan Spring",
+            "city": "Wellstown",
+            "state": "Maine",
+            "postal_code": "57013",
+            "country": "Northern Mariana Islands"
+        },
+        "account_balance": 5969.25,
+        "savings_balance": 1189.22,
+        "joined_date": "2020-06-21"
+    },
+    {
+        "customer_id": "82d350cb-f555-465f-ba5a-85214ee8ee28",
+        "first_name": "Bryan",
+        "last_name": "Lopez",
+        "email": "emoore@example.com",
+        "phone_number": "904-676-5047x53512",
+        "address": {
+            "street_address": "4619 Lopez Hollow Apt. 177",
+            "city": "West Madison",
+            "state": "Florida",
+            "postal_code": "11675",
+            "country": "Czech Republic"
+        },
+        "account_balance": 2101.18,
+        "savings_balance": 1103.76,
+        "joined_date": "2024-03-02"
+    },
+    {
+        "customer_id": "3dbea0cf-e689-4816-aa94-b5fe7e15fdc2",
+        "first_name": "Gregory",
+        "last_name": "Ray",
+        "email": "brownjames@example.net",
+        "phone_number": "717.357.3809",
+        "address": {
+            "street_address": "786 Michael Club Apt. 777",
+            "city": "New Cynthia",
+            "state": "Kansas",
+            "postal_code": "63452",
+            "country": "Mongolia"
+        },
+        "account_balance": 1627.08,
+        "savings_balance": 1758.93,
+        "joined_date": "2021-06-23"
+    },
+    {
+        "customer_id": "bb823330-ea87-427c-bdf7-a96ab7a3e9d2",
+        "first_name": "Rebecca",
+        "last_name": "Burns",
+        "email": "sfritz@example.net",
+        "phone_number": "707-205-5351",
+        "address": {
+            "street_address": "258 Smith Squares Suite 254",
+            "city": "Norristown",
+            "state": "Delaware",
+            "postal_code": "91083",
+            "country": "Ireland"
+        },
+        "account_balance": 7811.96,
+        "savings_balance": 1982.33,
+        "joined_date": "2024-09-20"
+    },
+    {
+        "customer_id": "e022d8bb-9709-49b8-b3b6-774a2b6db3b6",
+        "first_name": "Michael",
+        "last_name": "Hernandez",
+        "email": "qreyes@example.org",
+        "phone_number": "6612216247",
+        "address": {
+            "street_address": "2187 Lopez Lake",
+            "city": "South Timothyhaven",
+            "state": "Nevada",
+            "postal_code": "52415",
+            "country": "Montenegro"
+        },
+        "account_balance": 9457.43,
+        "savings_balance": 995.01,
+        "joined_date": "2024-11-30"
+    },
+    {
+        "customer_id": "6f5999ab-a2ad-44bc-9054-0910bd196bdf",
+        "first_name": "Lisa",
+        "last_name": "Bowman",
+        "email": "kennedyrobert@example.com",
+        "phone_number": "861-259-9510x68415",
+        "address": {
+            "street_address": "89220 Julian Ferry",
+            "city": "South Alanstad",
+            "state": "Alabama",
+            "postal_code": "89399",
+            "country": "Lebanon"
+        },
+        "account_balance": 4755.15,
+        "savings_balance": 1273.06,
+        "joined_date": "2020-10-11"
+    },
+    {
+        "customer_id": "c495df3c-06ba-4923-b53f-e0e2e0f09c81",
+        "first_name": "Christopher",
+        "last_name": "Taylor",
+        "email": "saguilar@example.com",
+        "phone_number": "518.750.8011x17422",
+        "address": {
+            "street_address": "841 Lucas Turnpike",
+            "city": "Jessicabury",
+            "state": "Delaware",
+            "postal_code": "17356",
+            "country": "Tokelau"
+        },
+        "account_balance": 4091.76,
+        "savings_balance": 2835.77,
+        "joined_date": "2021-01-01"
+    },
+    {
+        "customer_id": "90fbc6f6-72dc-4b5c-adf2-86a216be410a",
+        "first_name": "Sherry",
+        "last_name": "Bailey",
+        "email": "wilkersondavid@example.com",
+        "phone_number": "(431)838-0318x32263",
+        "address": {
+            "street_address": "45256 Jeffrey Vista Apt. 590",
+            "city": "East Michael",
+            "state": "New York",
+            "postal_code": "29634",
+            "country": "Kazakhstan"
+        },
+        "account_balance": 8118.87,
+        "savings_balance": 992.42,
+        "joined_date": "2023-05-22"
+    },
+    {
+        "customer_id": "a367b071-3752-4e40-a9c8-c393562395c1",
+        "first_name": "Michaela",
+        "last_name": "Hampton",
+        "email": "jennifergray@example.org",
+        "phone_number": "954.720.0305x321",
+        "address": {
+            "street_address": "46615 Mackenzie Knolls Apt. 897",
+            "city": "Michaelview",
+            "state": "Kansas",
+            "postal_code": "72322",
+            "country": "Oman"
+        },
+        "account_balance": 4076.42,
+        "savings_balance": 3672.58,
+        "joined_date": "2024-07-03"
+    },
+    {
+        "customer_id": "4555ec75-69b9-4e38-ba0f-d2c43cd14db8",
+        "first_name": "Tiffany",
+        "last_name": "Black",
+        "email": "jscott@example.org",
+        "phone_number": "(654)352-1921x167",
+        "address": {
+            "street_address": "1297 Teresa Ferry",
+            "city": "South Karenborough",
+            "state": "Indiana",
+            "postal_code": "62062",
+            "country": "Heard Island and McDonald Islands"
+        },
+        "account_balance": 8909.36,
+        "savings_balance": 710.8,
+        "joined_date": "2021-12-31"
+    },
+    {
+        "customer_id": "367b644b-4a80-49fc-87ed-7787d04c9ecf",
+        "first_name": "Martin",
+        "last_name": "Morrison",
+        "email": "michaeljones@example.com",
+        "phone_number": "402-553-1454x5506",
+        "address": {
+            "street_address": "71487 Melinda Shores",
+            "city": "Karlaview",
+            "state": "New Mexico",
+            "postal_code": "51573",
+            "country": "Gabon"
+        },
+        "account_balance": 1906.98,
+        "savings_balance": 2134.91,
+        "joined_date": "2020-07-03"
+    },
+    {
+        "customer_id": "87de36f6-0d8a-4100-beae-40b6a02bcce7",
+        "first_name": "Kelly",
+        "last_name": "Hunt",
+        "email": "jennaochoa@example.org",
+        "phone_number": "4766022205",
+        "address": {
+            "street_address": "165 Jonathan Parkway",
+            "city": "Wardberg",
+            "state": "Wyoming",
+            "postal_code": "20131",
+            "country": "Macao"
+        },
+        "account_balance": 9626.16,
+        "savings_balance": 3472.12,
+        "joined_date": "2022-09-27"
+    },
+    {
+        "customer_id": "311fe707-6409-4786-ac45-3db2488fc173",
+        "first_name": "Brenda",
+        "last_name": "Collins",
+        "email": "ganderson@example.com",
+        "phone_number": "697.920.5868x59325",
+        "address": {
+            "street_address": "589 Thomas Forge Apt. 011",
+            "city": "Christopherbury",
+            "state": "Louisiana",
+            "postal_code": "87434",
+            "country": "Zambia"
+        },
+        "account_balance": 8186.19,
+        "savings_balance": 4494.6,
+        "joined_date": "2023-02-07"
+    }
+]
+}
