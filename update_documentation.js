@@ -1,33 +1,38 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
 
-const riskReportPath = "risk_report.md";
-const advisoryPath = "advisory.md";
-const documentationPath = "SECURITY.md"; // Endre dette hvis du vil oppdatere en annen dokumentasjon
+function updateDocumentation(riskReportPath, advisoryPath, outputPath) {
+    try {
+        if (!fs.existsSync(riskReportPath)) {
+            console.error(`Error: ${riskReportPath} not found!`);
+            process.exit(1);
+        }
+        if (!fs.existsSync(advisoryPath)) {
+            console.error(`Error: ${advisoryPath} not found!`);
+            process.exit(1);
+        }
 
-console.log("Updating documentation...");
+        // Logikk for å oppdatere dokumentasjonen
+        console.log('Updating documentation...');
+        
+        // Les innholdet fra risikorapporten og advisory-rapporten
+        const riskReportContent = fs.readFileSync(riskReportPath, 'utf8');
+        const advisoryContent = fs.readFileSync(advisoryPath, 'utf8');
 
-// Check if required input files exist
-if (!fs.existsSync(riskReportPath) || !fs.existsSync(advisoryPath)) {
-  console.error("Error: Required input files not found!");
-  process.exit(1);
+        // Generer dokumentasjonsinnhold
+        let documentationContent = `# Documentation Update\n\n**Generated at:** ${new Date().toISOString()}\n\n`;
+        documentationContent += `## Risk Report\n\n${riskReportContent}\n\n`;
+        documentationContent += `## Advisory Report\n\n${advisoryContent}\n\n`;
+
+        // Skriv dokumentasjonen til en fil
+        fs.writeFileSync(outputPath, documentationContent);
+        console.log('Documentation updated successfully.');
+    } catch (error) {
+        console.error('Error updating documentation:', error);
+    }
 }
 
-// Read content from input files
-const riskReport = fs.readFileSync(riskReportPath, "utf8");
-const advisory = fs.readFileSync(advisoryPath, "utf8");
-
-// Generate new content for documentation
-let newContent = `# Security Documentation\n\n`;
-newContent += `## Latest Risk Assessment\n${riskReport}\n\n`;
-newContent += `## Security Advisory\n${advisory}\n\n`;
-
-if (fs.existsSync(documentationPath)) {
-  console.log("Updating existing documentation...");
-  fs.appendFileSync(documentationPath, newContent);
-} else {
-  console.log("Creating new documentation file...");
-  fs.writeFileSync(documentationPath, newContent);
-}
-
-console.log("Documentation updated successfully!");
+// Bruk filstier fra kommandolinjeargumenter
+const riskReportPath = process.argv[2] || 'risk_report.md';
+const advisoryPath = process.argv[3] || 'detailed_advisory.md';
+const outputPath = process.argv[4] || 'documentation_update.md';
+updateDocumentation(riskReportPath, advisoryPath, outputPath);
