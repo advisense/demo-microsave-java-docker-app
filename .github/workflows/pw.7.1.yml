@@ -43,7 +43,7 @@ jobs:
       if: failure()
       run: |
         echo "Checkstyle errors summary:" 
-        grep -oP 'Error:.*\(\K[^\)]+' checkstyle-output.txt | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
+        grep -oP 'Error:.*\(\K[^\)]+' checkstyle-output.txt 
       shell: bash
   spotbugs:
     runs-on: ubuntu-latest
