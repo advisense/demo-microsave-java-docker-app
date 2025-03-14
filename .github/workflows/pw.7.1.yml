@@ -36,7 +36,7 @@ jobs:
         cache: maven
 
     - name: Run Checkstyle
-      run: mvn checkstyle:check
+      run: mvn checkstyle:checkstyle
       working-directory: ${{ github.workspace }}
   spotbugs:
     runs-on: ubuntu-latest
