@@ -42,7 +42,7 @@ jobs:
       if: failure()
       run: |
         echo "Checkstyle errors summary:"
-        grep -oP '\(\K[^)]+' target/checkstyle-result.xml | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
+        grep -oP '\(\K[^\)]*' target/checkstyle-result.xml | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
       shell: bash
   spotbugs:
     runs-on: ubuntu-latest
