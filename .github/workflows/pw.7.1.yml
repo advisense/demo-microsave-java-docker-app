@@ -38,6 +38,12 @@ jobs:
     - name: Run Checkstyle
       run: mvn checkstyle:checkstyle
       working-directory: ${{ github.workspace }}
+    - name: Parse Checkstyle Errors
+      if: failure()
+      run: |
+        echo "Checkstyle errors summary:"
+        grep -oP '\(\K[^)]+' target/checkstyle-result.xml | sort | uniq -c | sort -nr
+      shell: bash
   spotbugs:
     runs-on: ubuntu-latest
     needs: build
