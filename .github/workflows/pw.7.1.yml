@@ -37,8 +37,11 @@ jobs:
 
     - name: Run Checkstyle
       id: checkstyle
-      run: mvn checkstyle:check > output_checkstyle.txt
-
+      run: |
+        mvn checkstyle:check > output_checkstyle.txt
+        echo "Checkstyle errors summary:"
+        grep -oP 'Error.*].\(\K[^\)]+' output_checkstyle.txt | sort | uniq -c | sort -nr
+      shell: bash
     - name: Parse Checkstyle Errors
       if: failure()
       run: |
