@@ -42,7 +42,7 @@ jobs:
     - name: Parse Checkstyle Errors
       if: failure()
       run: |
-        echo "Checkstyle errors summary:"
+        echo "Checkstyle errors summary:" 
         grep -oP 'Error:.*\(\K[^\)]+' checkstyle-output.txt | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
       shell: bash
   spotbugs:
