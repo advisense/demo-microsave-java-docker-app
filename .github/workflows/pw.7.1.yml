@@ -37,13 +37,13 @@ jobs:
 
     - name: Run Checkstyle
       id: checkstyle
-      run: mvn checkstyle:check
+      run: mvn checkstyle:check > output_checkstyle.txt
 
     - name: Parse Checkstyle Errors
       if: failure()
       run: |
         echo "Checkstyle errors summary:"
-        grep -oP 'Error:.*\(\K[^\)]+' checkstyle-output.txt | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
+        grep -oP 'Error.*].\(\K[^\)]+' output_checkstyle.txt | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
       shell: bash
   spotbugs:
     runs-on: ubuntu-latest
