@@ -37,7 +37,7 @@ jobs:
 
     - name: Run Checkstyle
       id: checkstyle
-      run: mvn checkstyle:check 
+      run: mvn checkstyle:check -e
 
     - name: Parse Checkstyle Errors
       if: failure()
