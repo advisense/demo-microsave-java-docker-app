@@ -36,13 +36,14 @@ jobs:
         cache: maven
 
     - name: Run Checkstyle
-      run: mvn checkstyle:check > checkstyle-result.xml
-      working-directory: ${{ github.workspace }}
+      id: checkstyle
+      run: mvn checkstyle:check > checkstyle-output.txt
+
     - name: Parse Checkstyle Errors
       if: failure()
       run: |
-        echo "Checkstyle errors summary:" 
-        grep -oP 'Error:.*\(\K[^\)]+' checkstyle-output.txt 
+        echo "Checkstyle errors summary:"
+        grep -oP '\(\K[^\)]+\)' checkstyle-output.txt | sort | uniq -c | sort -nr | while read count name; do echo "$name ($count)"; done
       shell: bash
   spotbugs:
     runs-on: ubuntu-latest
