@@ -1,7 +1,6 @@
 name: Java CI with Checkstyle and SpotBugs
 
 on: [push, pull_request]
-workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
