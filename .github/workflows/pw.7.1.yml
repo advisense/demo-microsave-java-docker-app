@@ -36,9 +36,8 @@ jobs:
         cache: maven
 
     - name: Run Checkstyle
-      id: checkstyle
-      run: mvn checkstyle:check > checkstyle-output.txt
-      shell: bash
+      run: mvn checkstyle:check > checkstyle-result.xml
+      working-directory: ${{ github.workspace }}
     - name: Parse Checkstyle Errors
       if: failure()
       run: |
