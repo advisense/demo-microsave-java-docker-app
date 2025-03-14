@@ -31,6 +31,14 @@ jobs:
     - name: Run Checkstyle
       run: mvn checkstyle:check
   spotbugs:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    # Step to check out the repository
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
     # Step to run SpotBugs
     - name: Run SpotBugs
       run: mvn spotbugs:check
