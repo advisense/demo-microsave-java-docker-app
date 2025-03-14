@@ -38,7 +38,7 @@ jobs:
     - name: Run Checkstyle
       id: checkstyle
       run: mvn checkstyle:check > checkstyle-output.txt
-
+      shell: bash
     - name: Parse Checkstyle Errors
       if: failure()
       run: |
