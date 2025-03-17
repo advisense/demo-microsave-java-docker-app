@@ -44,6 +44,29 @@ jobs:
             touch trivy-report.json
           fi
 
+       # Step 5: Install and run Checkov
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          framework: dockerfile
+      
+      # Step 6: Ensure checkov results file exists
+      - name: Ensure Checkov results file exists
+        run: |
+          if [ ! -f results.sarif ]; then
+          touch results.sarif
+          fi
+      
+      # Step 7: Upload results to GitHub Advanced Security
+      - name: Upload SARIF file
+        if: success() || failure()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: results.sarif
+          category: checkov
+
+
       # Step 5: Save the results as an artifact
       - name: Upload results
         uses: actions/upload-artifact@v4
