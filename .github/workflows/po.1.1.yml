@@ -1,0 +1,67 @@
+name: PO.1.1
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Running monthly on the first day of the month
+  push:
+    branches:
+      - main
+      - annSophie-po.1.1
+  workflow_dispatch: #  Allow maunal triggering
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Trivy
+      - name: Set up TrivyA
+        uses: aquasecurity/setup-trivy@v0.2.2
+        with:
+          version: 'v0.57.1'
+
+      # Step 3: Scan the entire project for vulnerabilities using Trivy
+      - name: Scan repository for vulnerabilities
+        id: trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/library/alpine:3.10'
+          format: json
+          output: trivy-report.json
+          exit-code: 0
+          severity: HIGH,CRITICAL
+          vuln-type: os,library
+          ignore-unfixed: false
+        continue-on-error: true
+
+      # Step 4: Ensure the Trivy report exists
+      - name: Ensure Trivy report exists
+        run: |
+          if [ ! -f trivy-report.json ]; then
+            touch trivy-report.json
+          fi
+
+      # Step 5: Save the results as an artifact
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-results
+          path: trivy-report.json
+
+
+      # Step 6: Comment Pull Requests with the results
+      - name: Comment on PR
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const fs = require('fs');
+            const results = fs.readFileSync('codeql-results.sarif', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `PO.1.1:\n\n${results}`
+            });
