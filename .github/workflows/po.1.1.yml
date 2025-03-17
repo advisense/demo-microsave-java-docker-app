@@ -50,18 +50,3 @@ jobs:
         with:
           name: security-results
           path: trivy-report.json
-
-
-      # Step 6: Comment Pull Requests with the results
-      - name: Comment on PR
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const fs = require('fs');
-            const results = fs.readFileSync('codeql-results.sarif', 'utf8');
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `PO.1.1:\n\n${results}`
-            });
