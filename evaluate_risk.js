@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// Assign a severity score based on vulnerability severity level
 function evaluateRisk(vulnerabilities) {
     return vulnerabilities.map(vuln => {
         let severityScore;
@@ -26,25 +27,24 @@ function evaluateRisk(vulnerabilities) {
     });
 }
 
+// Generate a risk report from the Trivy scan results
 function generateRiskReport(trivyReportPath, outputPath) {
     try {
-       // Read the Trivy report
+        // Read and parse the Trivy JSON report
         const rawData = fs.readFileSync(trivyReportPath, 'utf8');
         const report = JSON.parse(rawData);
 
-        // Log the parsed report to confirm it was read successfully
         console.log('Parsed report:', report);
 
-        // Extract vulnerabilities from the report
+        // Extract vulnerabilities from the report (handle missing data)
         const vulnerabilities = report.Results ? report.Results.flatMap(result => result.Vulnerabilities || []) : [];
 
-        // Log the parsed vulnerabilities to confirm they were extracted successfully
         console.log('Parsed vulnerabilities:', vulnerabilities);
 
-        // Evaluate the risk of each vulnerability
+        // Assign severity scores to vulnerabilities
         const evaluatedVulnerabilities = evaluateRisk(vulnerabilities);
 
-        // Generate a risk report
+        // Build the markdown report
         let reportContent = '# Risk Report\n\n';
         evaluatedVulnerabilities.forEach(vuln => {
             reportContent += `## ${vuln.VulnerabilityID}\n`;
@@ -61,7 +61,9 @@ function generateRiskReport(trivyReportPath, outputPath) {
     }
 }
 
-// Bruk filstier fra kommandolinjeargumenter
+// Read file paths from command-line arguments or use default values
 const trivyReportPath = process.argv[2] || 'trivy-report.json';
 const outputPath = process.argv[3] || 'risk_report.md';
+
+// Generate the risk report
 generateRiskReport(trivyReportPath, outputPath);
