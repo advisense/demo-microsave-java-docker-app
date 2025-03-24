@@ -1,0 +1,81 @@
+name: RV.2.2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * 1' # Kjør hver mandag kl 00:00
+  workflow_dispatch: # Tillater manuell kjøring
+
+jobs:
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.2
+        with:
+          version: 'v0.57.1'
+
+      - name: Run Trivy scan
+        id: trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/library/alpine:3.10'
+          format: json
+          output: trivy-report.json
+          severity: HIGH,CRITICAL
+          vuln-type: os,library
+          ignore-unfixed: false
+        continue-on-error: true
+
+      - name: Run Checkov scan
+        run: |
+          pip install checkov
+          checkov -d . --framework terraform --output json > checkov-report.json
+          cat checkov-report.json || echo "Checkov report not found!"
+        continue-on-error: true
+
+      - name: Ensure reports exist
+        run: |
+          if [ ! -f trivy-report.json ]; then
+            echo "Error: trivy-report.json not found!"
+            exit 1
+          fi
+          if [ ! -f checkov-report.json ]; then
+            echo "Error: checkov-report.json not found!"
+            exit 1
+          fi
+
+      - name: Generate Security Advisory
+        run: |
+          node generate_advisory.js trivy-report.json checkov-report.json
+          if [ ! -f detailed_advisory.md ]; then
+            echo "Error: detailed_advisory.md not found!"
+            exit 1
+          fi
+          cat detailed_advisory.md
+
+      - name: Create GitHub Issue
+        run: |
+          gh issue create --title "Security advisory: Critical vulnerabilities found" \
+            --body "$(cat detailed_advisory.md)" --label "security"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-reports
+          path: |
+            trivy-report.json
+            checkov-report.json
+            detailed_advisory.md
